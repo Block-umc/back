@@ -6,8 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/block
     username: root
-    password: #MySQL password
-
+    password: #mysql 비밀 번호
 
   sql:
     init:
@@ -21,7 +20,3 @@ spring:
         use_sql_comments: true
         hbm2ddl:
           auto: update
-
-  profiles:
-    include: API-KEY
-

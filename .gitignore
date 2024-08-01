@@ -1,14 +1,10 @@
 HELP.md
 .gradle
-application.yaml
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 application.yml
-### API key ###
-src/main/resources/application-API-KEY.properties
-
 ### STS ###
 .apt_generated
 .classpath
@@ -39,4 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
