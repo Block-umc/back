@@ -45,11 +45,11 @@ public class MyPageController {
         if (image == null || image.isEmpty()) {
             // 내 프로필 이미지 삭제
             return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
-                    imageService.deleteProfileImage(authService.getUserIdFromSecurity())));
+                    imageService.deleteImageFromS3(authService.getUserIdFromSecurity())));
         }
         // 내 프로필 이미지 등록, 변경 -> 새로 들어온 이미지로 변경
         return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
-                imageService.uploadProfileImage(authService.getUserIdFromSecurity(), image)));
+                imageService.uploadImageToS3(authService.getUserIdFromSecurity(), image)));
     }
 
     @GetMapping("/point")
