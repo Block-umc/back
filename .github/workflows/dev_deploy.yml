@@ -36,7 +36,7 @@ jobs:
       - name: Set Environment - API Secret Key
         uses: microsoft/variable-substitution@v1
         with:
-          files: ./src/main/resources/application-secret.yml;
+          files: ./src/main/resources/application-secret.yml
         env:
           jwt.secret-key: ${{ secrets.JWT_SECRET_KEY }}
 
