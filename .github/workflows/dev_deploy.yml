@@ -67,7 +67,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_ACTION_SECRET_ACCESS_KEY }}
           application_name: block-prod
           environment_name: Block-prod-env
-          version_label: github-action-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}
+          version_label: deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}
           region: ap-northeast-2
           deployment_package: deploy/deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
           wait_for_deployment: false
