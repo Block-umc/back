@@ -39,9 +39,11 @@ public class Review extends BaseEntity {
     private String prize;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<TransactionReview> transactionReviewList=new ArrayList<>();
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<ReviewAverageScore> reviewAverageScoresList=new ArrayList<>();
 
 }

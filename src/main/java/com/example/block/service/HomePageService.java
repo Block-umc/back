@@ -18,11 +18,6 @@ public class HomePageService {
     private final ContestRepository contestRepository;
     private final UserRepository userRepository;
 
-    public List<HomeRequestDTO.HomeContestDTO> getAllContestList() {
-        return HomeRequestConverter.toHomeContestDTOList(contestRepository.findAll());
-    }
-
-
 
     public HomeRequestDTO.HomePageRequestDTO getHomePageRequestDTO(Integer userId) {
         List<HomeRequestDTO.HomeContestDTO> contestList = this.getContestByPrefer(userId);

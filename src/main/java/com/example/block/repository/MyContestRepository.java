@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MyContestRepository extends JpaRepository<MyContest, Integer> {
     List<MyContest> findByUserId(Integer userId);
-    MyContest findByUserIdAndId(Integer userId, Integer Id);
+    MyContest findByUserIdAndContestId(Integer userId, Integer contestId);
 }

@@ -21,5 +21,6 @@ public class ContestResponseDTO {
         private ContestType contestCategory;
         private String startDate;
         private String endDate;
+        private String HashTag;
     }
 }

@@ -125,7 +125,7 @@ public class MyPageController {
     // 마이페이지 옵션 내 저장한 공모전, 후기 조회
     @GetMapping("myContestInfo")
     @Operation(summary = "마이페이지 옵션 내 저장한 공모전, 후기 조회")
-    public ApiResponse<MyPageResponseDTO.myPageDTO> getMyContest(@RequestParam(name = "userId") Integer userId) {
+    public ApiResponse<MyPageResponseDTO.myPageDTO> getMyContest() {
         // 해당 버튼을 가지고 있는 뷰를 보여주면서 메인페이지도 보여줘야하기 때문에 같은 메소드 사용
         MyPageResponseDTO.myPageDTO user = myPageService.getMyPageUser();
         return ApiResponse.onSuccess(user);
@@ -134,7 +134,7 @@ public class MyPageController {
     // 마이페이지 옵션 내 저장한 공모전 조회
     @GetMapping("myContests")
     @Operation(summary = "마이페이지 옵션 내 저장한 공모전 조회")
-    public ApiResponse<List<MyPageResponseDTO.contestDTO>> getMyContests(@RequestParam(name = "userId") Integer userId) {
+    public ApiResponse<List<MyPageResponseDTO.contestDTO>> getMyContests() {
         // 내가 저장한 공모전 목록 조회
         return ApiResponse.onSuccess(myPageService.getMyContestList());
     }

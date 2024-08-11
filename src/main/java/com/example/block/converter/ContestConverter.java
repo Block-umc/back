@@ -18,6 +18,7 @@ public class ContestConverter {
                 .contestCategory(contest.getContestCategory())
                 .startDate(contest.getStartDate().toString())
                 .endDate(contest.getEndDate().toString())
+                .HashTag(contest.getHashTag())
                 .build();
     }
 

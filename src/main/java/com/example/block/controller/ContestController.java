@@ -29,8 +29,15 @@ public class ContestController {
     @PostMapping("{contestId}/save")
     @Operation(summary = "공모전 저장")
     public ApiResponse<String> saveContest(@PathVariable Integer contestId) {
-        contestService.saveMyContest(contestId);
+            return ApiResponse.onSuccess(contestService.saveMyContest(contestId));
+    }
 
-        return ApiResponse.onSuccess("공모전이 저장되었습니다.");
+    // 공모전 삭제
+    @DeleteMapping("{contestId}/delete")
+    @Operation(summary = "공모전 삭제")
+    public ApiResponse<String> deleteContest(@PathVariable Integer contestId) {
+        contestService.deleteMyContest(contestId);
+
+        return ApiResponse.onSuccess("공모전이 삭제되었습니다.");
     }
 }

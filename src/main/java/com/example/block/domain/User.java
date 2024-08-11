@@ -106,12 +106,15 @@ public class User extends BaseEntity {
     private double score;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<TransactionReview> transactionReviewList=new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<ReviewAverageScore> reviewAverageScoresList=new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<PointDetail> pointDetailList=new ArrayList<>();
 
     public void setId(Integer id) {
@@ -123,6 +126,7 @@ public class User extends BaseEntity {
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<MyContest> myContestList = new ArrayList<>();
     @Builder
     public User(Long serialId) {
@@ -155,9 +159,11 @@ public class User extends BaseEntity {
     }
 
     @OneToMany(mappedBy = "userLiker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
     private List<Likes> likerList = new ArrayList<>();
 
     @OneToMany(mappedBy = "userLiked", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
     private List<Likes> likedList = new ArrayList<>();
 
 

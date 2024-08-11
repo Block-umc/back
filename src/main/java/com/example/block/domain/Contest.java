@@ -53,21 +53,26 @@ public class Contest extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
+    @Setter
     private ContestType contestCategory;
 
     @Column(nullable = false)
     private String host;
 
     @OneToMany(mappedBy = "contest")
+    @Builder.Default
     private List<Likes> likesList = new ArrayList<>();
 
     @OneToMany(mappedBy = "contest", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<Review> reviewList = new ArrayList<>();
 
     @OneToMany(mappedBy = "contest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
     private List<Applicant> applicants = new ArrayList<>();
 
     @OneToMany(mappedBy = "contest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
     private List<MyContest> myContests = new ArrayList<>();
 
 }
