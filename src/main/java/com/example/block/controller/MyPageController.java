@@ -12,7 +12,7 @@ import com.example.block.domain.mapping.Applicant;
 import com.example.block.dto.MyPageResponseDTO;
 import com.example.block.dto.PointRequestDTO;
 import com.example.block.dto.PointResponseDTO;
-import com.example.block.service.ImageService;
+//import com.example.block.service.ImageService;
 import com.example.block.service.AuthService;
 import com.example.block.service.MyPageService;
 import com.example.block.service.PointService;
@@ -34,23 +34,23 @@ import java.util.List;
 public class MyPageController {
     private final PointService pointService;
     private final MyPageService myPageService;
-    private final ImageService imageService;
+//    private final ImageService imageService;
     private final AuthService authService;
 
-    @PostMapping(value="/myProfileChange",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @Operation(summary = "내 프로필 이미지 등록,변경,삭제",
-            description = "선택파일이 없으면 기존 프로필 이미지를 삭제합니다. 선택파일이 없을 경우 Send empty value 체크해제하고 테스트해주세요. swagger 기본스펙이라 수정이 안됨..")
-    public ApiResponse<MyPageResponseDTO.profileImageDTO> changeProfileImage(@RequestPart(value = "file", required = false) MultipartFile image)
-    {
-        if (image == null || image.isEmpty()) {
-            // 내 프로필 이미지 삭제
-            return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
-                    imageService.deleteProfileImage(authService.getUserIdFromSecurity())));
-        }
-        // 내 프로필 이미지 등록, 변경 -> 새로 들어온 이미지로 변경
-        return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
-                imageService.uploadProfileImage(authService.getUserIdFromSecurity(), image)));
-    }
+//    @PostMapping(value="/myProfileChange",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    @Operation(summary = "내 프로필 이미지 등록,변경,삭제",
+//            description = "선택파일이 없으면 기존 프로필 이미지를 삭제합니다. 선택파일이 없을 경우 Send empty value 체크해제하고 테스트해주세요. swagger 기본스펙이라 수정이 안됨..")
+//    public ApiResponse<MyPageResponseDTO.profileImageDTO> changeProfileImage(@RequestPart(value = "file", required = false) MultipartFile image)
+//    {
+//        if (image == null || image.isEmpty()) {
+//            // 내 프로필 이미지 삭제
+//            return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
+//                    imageService.deleteProfileImage(authService.getUserIdFromSecurity())));
+//        }
+//        // 내 프로필 이미지 등록, 변경 -> 새로 들어온 이미지로 변경
+//        return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
+//                imageService.uploadProfileImage(authService.getUserIdFromSecurity(), image)));
+//    }
 
     @GetMapping("/point")
     @Operation(summary = "내 포인트 조회")

@@ -20,17 +20,25 @@ jobs:
           java-version: 17
           distribution: 'adopt'
 
-      - run: touch ./src/main/resources/application.yaml
-      - run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.yaml
-      - run: cat ./src/main/resources/application.yaml
+      - name: Set Environment - Common Yml
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application.yaml
+        env:
+          spring.datasource.url: ${{ secrets.DB_NAME }}
+          spring.datasource.username: ${{ secrets.DB_USERNAME }}
+          spring.datasource.password: ${{ secrets.DB_PASSWORD }}
 
       - run: touch ./src/main/resources/application-API-KEY.properties
       - run: echo "${{ secrets.APPLICATION_API_KEY }}" > ./src/main/resources/application-API-KEY.properties
       - run: cat ./src/main/resources/application-API-KEY.properties
 
-      - run: touch ./src/main/resources/application-secret.yml
-      - run: echo "${{ secrets.APPLICATION_SECRET }}" > ./src/main/resources/application-secret.yml
-      - run: cat ./src/main/resources/application-secret.yml
+      - name: Set Environment - API Secret Key
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application-secret.yml
+        env:
+          jwt.secret-key: ${{ secrets.JWT_SECRET_KEY }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
@@ -58,16 +66,16 @@ jobs:
           cp Procfile deploy/Procfile
           cp -r .ebextensions deploy/.ebextensions
           cp -r .platform deploy/.platform
-          cd deploy && zip -r deploy.zip .
+          cd deploy && zip -r deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}} .
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v20
         with:
           aws_access_key: ${{ secrets.AWS_ACTION_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_ACTION_SECRET_ACCESS_KEY }}
-          application_name: block-prod
-          environment_name: Block-prod-env
-          version_label: github-action-${{ steps.current-time.outputs.formattedTime }}
+          application_name: Block-master
+          environment_name: Block-master-env
+          version_label: deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}
           region: ap-northeast-2
-          deployment_package: deploy/deploy.zip
-          wait_for_deployment: true
+          deployment_package: deploy/deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
+          wait_for_deployment: false
