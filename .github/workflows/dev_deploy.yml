@@ -20,17 +20,28 @@ jobs:
           java-version: 17
           distribution: 'adopt'
 
-      - run: touch ./src/main/resources/application.yaml
-      - run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.yaml
-      - run: cat ./src/main/resources/application.yaml
+      - name: Set Environment - Common Yml
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application.yaml
+        env:
+          spring.datasource.url: ${{ secrets.DB_NAME }}
+          spring.datasource.username: ${{ secrets.DB_USERNAME }}
+          spring.datasource.password: ${{ secrets.DB_PASSWORD }}
 
-      - run: touch ./src/main/resources/application-API-KEY.properties
-      - run: echo "${{ secrets.APPLICATION_API_KEY }}" > ./src/main/resources/application-API-KEY.properties
-      - run: cat ./src/main/resources/application-API-KEY.properties
+      - name: Set Environment - API KEY Properties
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application.yaml
+        env:
+          kakao-admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
 
-      - run: touch ./src/main/resources/application-secret.yml
-      - run: echo "${{ secrets.APPLICATION_SECRET }}" > ./src/main/resources/application-secret.yml
-      - run: cat ./src/main/resources/application-secret.yml
+      - name: Set Environment - API Secret Key
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application.yaml
+        env:
+          jwt.secret-key: ${{ secrets.JWT_SECRET_KEY }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
