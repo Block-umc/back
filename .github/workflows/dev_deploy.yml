@@ -29,12 +29,9 @@ jobs:
           spring.datasource.username: ${{ secrets.DB_USERNAME }}
           spring.datasource.password: ${{ secrets.DB_PASSWORD }}
 
-      - name: Set Environment - API KEY Properties
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: ./src/main/resources/application-API-KEY.properties
-        env:
-          kakao-admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
+      - run: touch ./src/main/resources/application-API-KEY.properties
+      - run: echo "${{ secrets.APPLICATION_API_KEY }}" > ./src/main/resources/application-API-KEY.properties
+      - run: cat ./src/main/resources/application-API-KEY.properties
 
       - name: Set Environment - API Secret Key
         uses: microsoft/variable-substitution@v1
