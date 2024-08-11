@@ -32,14 +32,14 @@ jobs:
       - name: Set Environment - API KEY Properties
         uses: microsoft/variable-substitution@v1
         with:
-          files: ./src/main/resources/application.yaml
+          files: ./src/main/resources/application-API-KEY.properties
         env:
           kakao-admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
 
       - name: Set Environment - API Secret Key
         uses: microsoft/variable-substitution@v1
         with:
-          files: ./src/main/resources/application.yaml
+          files: ./src/main/resources/application-secret.yml;
         env:
           jwt.secret-key: ${{ secrets.JWT_SECRET_KEY }}
 
