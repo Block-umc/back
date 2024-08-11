@@ -93,9 +93,9 @@ public class MyPageController {
     }
 
     // 마이 페이지 메인 화면
-    @GetMapping("{userId}")
+    @GetMapping("/")
     @Operation(summary = "마이 페이지 메인 화면")
-    public ApiResponse<MyPageResponseDTO.myPageDTO> getMyPageMain(@RequestParam(name = "userId") Integer userId) {
+    public ApiResponse<MyPageResponseDTO.myPageDTO> getMyPageMain() {
         // 마이 페이지 메인 화면 데이터 조회
         MyPageResponseDTO.myPageDTO user = myPageService.getMyPageUser();
 
@@ -103,9 +103,9 @@ public class MyPageController {
     }
 
     // 마이 페이지_내 정보 수정
-    @GetMapping("{userId}/edit")
+    @GetMapping("/edit")
     @Operation(summary = "마이 페이지_내 정보 수정")
-    public ApiResponse<MyPageResponseDTO.myPageDTO> editMyPage(@RequestParam(name = "userId") Integer userId) {
+    public ApiResponse<MyPageResponseDTO.myPageDTO> editMyPage() {
         // 마이 페이지 내 정보 수정
         // 기본 정보는 메인 화면과 똑같이 보여주면서 수정 가능한 리스트의 뷰를 보여주므로 같은 메소드 사용
         MyPageResponseDTO.myPageDTO user = myPageService.getMyPageUser();
@@ -113,11 +113,10 @@ public class MyPageController {
     }
 
     // 마이 페이지_내 정보 수정 완료시
-    @PostMapping("{userId}/edit")
+    @PostMapping("/edit")
     @Operation(summary = "마이 페이지_내 정보 수정 완료")
     // 수정된 정보를 확인하기 위해 User를 반환함
-    public void editMyPageComplete(@RequestParam(name = "userId") Integer userId,
-                                                @RequestBody MyPageResponseDTO.myPageEditDataDTO updatedUser) {
+    public void editMyPageComplete(@RequestBody MyPageResponseDTO.myPageEditDataDTO updatedUser) {
         // 수정된 정보를 저장하고
         myPageService.updateUser(updatedUser);
     }
