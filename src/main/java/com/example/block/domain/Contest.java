@@ -37,10 +37,8 @@ public class Contest extends BaseEntity {
     @Column(nullable = false)
     private String imageUrl;
 
-    @ElementCollection
-    @CollectionTable(name = "contest_hashtags", joinColumns = @JoinColumn(name = "contest_id"))
-    @Column(name = "hashtag")
-    private List<String> hashTag = new ArrayList<>();
+    @Column(nullable = true)
+    private String hashTag;
 
     @Column(nullable = false, length = 10)
     private String startDate;

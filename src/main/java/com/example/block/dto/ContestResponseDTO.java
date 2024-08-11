@@ -22,7 +22,7 @@ public class ContestResponseDTO {
         private ContestType contestCategory;
         private String startDate;
         private String endDate;
-        private List<String> HashTag;
+        private String HashTag;
         private String hostUrl;
     }
 }
