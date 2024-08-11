@@ -69,5 +69,5 @@ jobs:
           environment_name: Block-prod-env
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}
           region: ap-northeast-2
-          deployment_package: deploy/deploy.zip-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
+          deployment_package: deploy/deploy-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
           wait_for_deployment: false
