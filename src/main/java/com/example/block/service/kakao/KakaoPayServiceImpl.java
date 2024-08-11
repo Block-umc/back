@@ -69,9 +69,9 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         params.put("quantity", "1");//상품 수량
         params.put("total_amount", totalAmount);//상품 총액
         params.put("tax_free_amount", "0");//상품 비과세 금액
-        params.put("approval_url", "http://localhost:8080/pay/success");//결제 성공시 redirect url
-        params.put("cancel_url", "http://localhost:8080/pay/cancel");//결제 취소시 redirect url
-        params.put("fail_url", "http://localhost:8080/pay/fail");//결제 실패시 redirect url
+        params.put("approval_url", "http://13.209.114.87:8080/pay/success");//결제 성공시 redirect url
+        params.put("cancel_url", "http://13.209.114.87:8080/pay/cancel");//결제 취소시 redirect url
+        params.put("fail_url", "http://13.209.114.87:8080/pay/fail");//결제 실패시 redirect url
 
         //헤더와 바디
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(params, this.getHeaders());
