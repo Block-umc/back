@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     @Query("UPDATE User u SET u.point = u.point + :amount WHERE u.id = :userId")
     void calculateUserPoints(@Param("userId") Integer userId, @Param("amount") Long amount);
-    
+
     @Modifying
     @Query("UPDATE User u SET u.imageUrl = :profileImageUrl WHERE u.id = :userId")
     void updateProfileImageUrl(@Param("userId") Integer userId, @Param("profileImageUrl") String profileImageUrl);
@@ -36,7 +36,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update User u set u.refreshToken = :refreshToken, u.isLogin = :isLogin where u.id = :id")
-    void updateRefreshTokenAndLoginStatus(Integer id, String refreshToken, Boolean isLogin);
+    void updateRefreshTokenAndLoginStatus(@Param("Id") Integer id, @Param("refeshToken") String refreshToken,@Param("isLogin") Boolean isLogin);
 
     Optional<User> findByEmail(String email);
 
