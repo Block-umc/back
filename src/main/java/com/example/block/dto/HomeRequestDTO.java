@@ -1,6 +1,7 @@
 package com.example.block.dto;
 
 import com.example.block.domain.Contest;
+import com.example.block.domain.enums.ContestCategory;
 import lombok.*;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class HomeRequestDTO {
         private Integer contestId;
         private String contestName;
         private String contestHost;
-        private String contestCategory;
+        private ContestCategory contestCategory;
         private String contestImageUrl;
     }
 }

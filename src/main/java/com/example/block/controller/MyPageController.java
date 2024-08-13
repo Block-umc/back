@@ -12,8 +12,9 @@ import com.example.block.domain.mapping.Applicant;
 import com.example.block.dto.MyPageResponseDTO;
 import com.example.block.dto.PointRequestDTO;
 import com.example.block.dto.PointResponseDTO;
-import com.example.block.service.ImageService;
+//import com.example.block.service.ImageService;
 import com.example.block.service.AuthService;
+import com.example.block.service.ImageService;
 import com.example.block.service.MyPageService;
 import com.example.block.service.PointService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,6 +38,7 @@ public class MyPageController {
     private final ImageService imageService;
     private final AuthService authService;
 
+
     @PostMapping(value="/myProfileChange",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "내 프로필 이미지 등록,변경,삭제",
             description = "선택파일이 없으면 기존 프로필 이미지를 삭제합니다. 선택파일이 없을 경우 Send empty value 체크해제하고 테스트해주세요. swagger 기본스펙이라 수정이 안됨..")
@@ -51,6 +53,7 @@ public class MyPageController {
         return ApiResponse.onSuccess(MyPageConverter.toChangeProfileImageDTO(
                 imageService.uploadImageToS3(authService.getUserIdFromSecurity(), image)));
     }
+
 
     @GetMapping("/point")
     @Operation(summary = "내 포인트 조회")
@@ -93,7 +96,7 @@ public class MyPageController {
     }
 
     // 마이 페이지 메인 화면
-    @GetMapping("/")
+    @GetMapping()
     @Operation(summary = "마이 페이지 메인 화면")
     public ApiResponse<MyPageResponseDTO.myPageDTO> getMyPageMain() {
         // 마이 페이지 메인 화면 데이터 조회
