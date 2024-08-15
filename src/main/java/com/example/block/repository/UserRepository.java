@@ -36,7 +36,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update User u set u.refreshToken = :refreshToken, u.isLogin = :isLogin where u.id = :id")
-    void updateRefreshTokenAndLoginStatus(@Param("Id") Integer id, @Param("refeshToken") String refreshToken,@Param("isLogin") Boolean isLogin);
+    void updateRefreshTokenAndLoginStatus(@Param("id") Integer id, @Param("refreshToken") String refreshToken,@Param("isLogin") Boolean isLogin);
 
     Optional<User> findByEmail(String email);
 

@@ -37,7 +37,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(Constants.NO_NEED_AUTH_URLS);
     }
-        @Override
+    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // 모든 경로에 대해
                 .allowedOrigins("http://localhost:3000")  // React 앱의 주소
