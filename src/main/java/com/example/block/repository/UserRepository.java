@@ -17,9 +17,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u.email FROM User u WHERE u.id = :userId")
     String getEmailById(@Param("userId") Integer userId);
 
+
     @Modifying
     @Query("UPDATE User u SET u.point = u.point + :amount WHERE u.id = :userId")
-    void calculateUserPoints(Integer userId, Long amount);
+    void calculateUserPoints(@Param("userId") Integer userId, @Param("amount") Long amount);
 
     @Modifying
     @Query("UPDATE User u SET u.imageUrl = :profileImageUrl WHERE u.id = :userId")
@@ -35,7 +36,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update User u set u.refreshToken = :refreshToken, u.isLogin = :isLogin where u.id = :id")
-    void updateRefreshTokenAndLoginStatus(Integer id, String refreshToken, Boolean isLogin);
+    void updateRefreshTokenAndLoginStatus(@Param("id") Integer id, @Param("refreshToken") String refreshToken,@Param("isLogin") Boolean isLogin);
 
     Optional<User> findByEmail(String email);
 
@@ -49,3 +50,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findById(Integer Id);
 }
+
+
+
+

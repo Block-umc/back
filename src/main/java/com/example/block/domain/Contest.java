@@ -59,6 +59,9 @@ public class Contest extends BaseEntity {
     @Column(nullable = false)
     private String host;
 
+    @Column(nullable = false)
+    private String hostUrl;
+
     @OneToMany(mappedBy = "contest")
     @Builder.Default
     private List<Likes> likesList = new ArrayList<>();

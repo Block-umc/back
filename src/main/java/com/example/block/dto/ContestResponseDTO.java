@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.util.List;
 import java.util.Locale;
 
 public class ContestResponseDTO {
@@ -22,5 +23,6 @@ public class ContestResponseDTO {
         private String startDate;
         private String endDate;
         private String HashTag;
+        private String hostUrl;
     }
 }

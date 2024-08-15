@@ -19,6 +19,7 @@ public class ContestConverter {
                 .startDate(contest.getStartDate().toString())
                 .endDate(contest.getEndDate().toString())
                 .HashTag(contest.getHashTag())
+                .hostUrl(contest.getHostUrl())
                 .build();
     }
 
