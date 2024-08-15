@@ -42,6 +42,12 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 
     @Value("${kakao-admin-key}")
     private String kakao_admin_key; //어플리케이션 어드민 키
+    @Value("${KAKAOPAY_APPROVAL_URL}")
+    private String kakao_approve_url; //카카오페이 승인 URL
+    @Value("${KAKAOPAY_CANCEL_URL}")
+    private String kakao_cancel_url; //카카오페이 취소 URL
+    @Value("${KAKAOPAY_FAIL_URL}")
+    private String kakao_fail_url; //카카오페이 실패 URL
 
     @Override
     public KakaoPayResponseDTO.KakaoPayReadyResponseDTO kakaoPayReady(KakaoPayRequestDTO.KakaoPayReadyRequestDTO readyDTO) {
@@ -69,9 +75,9 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         params.put("quantity", "1");//상품 수량
         params.put("total_amount", totalAmount);//상품 총액
         params.put("tax_free_amount", "0");//상품 비과세 금액
-        params.put("approval_url", "http://13.209.114.87:8080/pay/success");//결제 성공시 redirect url
-        params.put("cancel_url", "http://13.209.114.87:8080/pay/cancel");//결제 취소시 redirect url
-        params.put("fail_url", "http://13.209.114.87:8080/pay/fail");//결제 실패시 redirect url
+        params.put("approval_url", kakao_approve_url);//결제 성공시 redirect url
+        params.put("cancel_url", kakao_cancel_url);//결제 취소시 redirect url
+        params.put("fail_url", kakao_fail_url);//결제 실패시 redirect url
 
         //헤더와 바디
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(params, this.getHeaders());
