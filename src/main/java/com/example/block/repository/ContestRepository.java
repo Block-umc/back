@@ -12,5 +12,5 @@ public interface ContestRepository extends JpaRepository<Contest, Integer>{
     Optional<Contest> findById(Integer contestId);
     List<Contest> findContestByHashTag(String category);
     List<Contest> findContestByHashTagIn(List<String> categorys);
-    List<Contest> findAllContest();
+    List<Contest> findAll();
 }

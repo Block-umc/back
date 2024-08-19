@@ -19,7 +19,7 @@ import java.util.Date;
 
 @Component
 public class JwtUtil implements InitializingBean {
-    @Value("${jwt.secret-key}")
+    @Value("asdfasdfasdfasdrt123a1241qwetqpknapilugipk1j23k4lhj1adfkj9312kl3nasdkflj9Nvlnyasdfakljf891023jhlkasdf91nkhldf91kjlas90dfjl1k29azalikdjf912kjl3lasd9f0j1kl239asdjlkf")
     private String secretKey;
     @Value("${jwt.access-token-expire-period}")
     private Integer accessTokenExpirePeriod;
