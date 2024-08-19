@@ -31,7 +31,7 @@ public class HomePageService {
 
     public List<HomeRequestDTO.HomeContestDTO> getContestByPrefer(Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다."));
-        List<Contest> contests = this.getContestByCategory(user.getInterestCategory());
+        List<Contest> contests = contestRepository.findAllContest();
         return HomeRequestConverter.toHomeContestDTOList(contests, user);
     }
 
