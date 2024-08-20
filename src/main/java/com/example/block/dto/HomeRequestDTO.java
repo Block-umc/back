@@ -28,7 +28,7 @@ public class HomeRequestDTO {
         private Integer contestId;
         private String contestName;
         private String contestHost;
-        private ContestCategory contestCategory;
+        private String contestCategory;
         private String contestImageUrl;
     }
 }

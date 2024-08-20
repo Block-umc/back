@@ -25,7 +25,7 @@ public class HomeRequestConverter {
                 .contestId(contest.getId())
                 .contestName(contest.getTitle())
                 .contestHost(contest.getHost())
-                .contestCategory(user.getInterestCategory())
+                .contestCategory(contest.getHashTag())
                 .contestImageUrl(contest.getImageUrl())
                 .build();
     }

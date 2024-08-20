@@ -49,7 +49,7 @@ public class HomePageService {
         else if (category == INDUSTRY)
             return contestRepository.findContestByHashTag("산업•사회•건축•관광•창업");
         else if (category == SCIENCE)
-            return contestRepository.findContestByHashTag("과학•공학•기술
+            return contestRepository.findContestByHashTag("과학•공학•기술");
         else if (category == ART)
             return contestRepository.findContestByHashTagIn(List.of("디자인•캐릭터•웹툰", "문학•문예", "음악•가요•댄스•무용"));
         else
