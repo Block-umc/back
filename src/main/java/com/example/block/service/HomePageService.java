@@ -31,7 +31,7 @@ public class HomePageService {
 
     public List<HomeRequestDTO.HomeContestDTO> getContestByPrefer(Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다."));
-        List<Contest> contests = this.getContestByCategory(user.getInterestCategory());
+        List<Contest> contests = contestRepository.findAll();
         return HomeRequestConverter.toHomeContestDTOList(contests, user);
     }
 
@@ -49,7 +49,7 @@ public class HomePageService {
         else if (category == INDUSTRY)
             return contestRepository.findContestByHashTag("산업•사회•건축•관광•창업");
         else if (category == SCIENCE)
-            return contestRepository.findContestByHashTag("과학•공학•기술");
+            return contestRepository.findContestByHashTag("과학•공학•기술
         else if (category == ART)
             return contestRepository.findContestByHashTagIn(List.of("디자인•캐릭터•웹툰", "문학•문예", "음악•가요•댄스•무용"));
         else
