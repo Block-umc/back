@@ -18,6 +18,8 @@ public class MyPageConverter {
                         .major(applicant.getUser().getUnivMajor())
                         .applyPart(applicant.getApplyPart())
                         .contestTitle(applicant.getContest().getTitle())
+                        .contestId(applicant.getContest().getId())
+                        .profileImage(applicant.getUser().getImageUrl())
                         .build()
                 ).collect(Collectors.toList());
     }
@@ -59,6 +61,18 @@ public class MyPageConverter {
                 .imageUrl(contest.getImageUrl())
                 .applyUrl(contest.getApplyUrl())
                 .status(contest.getContestType())
+                .build();
+    }
+
+    public static MyPageResponseDTO.matchContestDTO toMatchContest(Contest contest) {
+        return MyPageResponseDTO.matchContestDTO.builder()
+                .id(contest.getId())
+                .imageUrl(contest.getImageUrl())
+                .applyUrl(contest.getApplyUrl())
+                .status(contest.getContestType())
+                .startDate(contest.getStartDate())
+                .endDate(contest.getEndDate())
+                .title(contest.getTitle())
                 .build();
     }
 }
