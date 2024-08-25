@@ -1,6 +1,7 @@
 package com.example.block.service;
 
 import com.example.block.converter.MyPageConverter;
+import com.example.block.domain.Contest;
 import com.example.block.domain.MyContest;
 import com.example.block.domain.User;
 import com.example.block.domain.mapping.Applicant;
@@ -22,7 +23,9 @@ public class MyPageService {
     private final ApplicantRepository applicantRepository;
     private final UserRepository userRepository;
     private final MyContestRepository mycontestRepository;
+    private final MatchesRepository matchesRepository;
     private final AuthService authService;
+    private final ContestRepository contestRepository;
 
     public Applicant getChallenger(Integer contestId, Integer userId){
         return applicantRepository.findByContestIdAndUserId(contestId, userId).get();
@@ -76,4 +79,15 @@ public class MyPageService {
                 .collect(Collectors.toList());
     }
 
+    //매칭된 공모전 조회
+    public List<MyPageResponseDTO.matchContestDTO> getMatchedContestList() {
+        List<Integer> myContestList = matchesRepository.findMatchedContestByUserId(authService.getUserIdFromSecurity());
+
+        // 중복된 contestId를 제거하고, contestDTO 리스트로 변환
+        return myContestList.stream()
+                .distinct()  // 중복된 contestId 제거
+                .map(contestId -> contestRepository.findById(contestId).orElse(null)) // contestId로 Contest 객체 조회
+                .map(MyPageConverter::toMatchContest) // Contest 객체를 contestDTO로 변환
+                .collect(Collectors.toList()); // 최종적으로 리스트로 수집
+    }
 }

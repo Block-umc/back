@@ -141,4 +141,11 @@ public class MyPageController {
         return ApiResponse.onSuccess(myPageService.getMyContestList());
     }
 
+    @GetMapping("matchedContests")
+    @Operation(summary = "마이페이지 옵션 내 매칭된 공모전 조회")
+    public ApiResponse<List<MyPageResponseDTO.matchContestDTO>> getMatchedContests() {
+        // 내가 매칭된 공모전 목록 조회
+        return ApiResponse.onSuccess(myPageService.getMatchedContestList());
+    }
+
 }

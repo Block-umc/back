@@ -46,9 +46,9 @@ public class ReviewService {
             return review;
         }
         //결제가 되어있지 않을 경우 결제가 필요하다는 에러를 반환
-        if (!isAlreadyPaid(userId,reviewId)) {
+        /*if (!isAlreadyPaid(userId,reviewId)) {
             throw new GeneralException(ErrorStatus._NEED_PAY);
-        }
+        }*/
         // 리뷰 반환
         return review;
     }
