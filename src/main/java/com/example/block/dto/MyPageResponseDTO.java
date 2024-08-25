@@ -26,6 +26,8 @@ public class MyPageResponseDTO {
         String major;
         ApplyPart applyPart;
         String contestTitle;
+        Integer contestId;
+        String profileImage;
     }
 
     @Builder
@@ -82,4 +84,21 @@ public class MyPageResponseDTO {
         ContestType status;
     }
 
+    // 매칭된 공모전 조회에서 사용
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class matchContestDTO {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        Integer id;
+        String applyUrl;
+        String imageUrl;
+        String title;
+        String startDate;
+        String endDate;
+        ContestType status;
+    }
 }
