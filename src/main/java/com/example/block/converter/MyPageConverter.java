@@ -68,11 +68,11 @@ public class MyPageConverter {
         return MyPageResponseDTO.matchContestDTO.builder()
                 .id(contest.getId())
                 .imageUrl(contest.getImageUrl())
-                .applyUrl(contest.getApplyUrl())
                 .status(contest.getContestType())
                 .startDate(contest.getStartDate())
                 .endDate(contest.getEndDate())
                 .title(contest.getTitle())
+                .host(contest.getHost())
                 .build();
     }
 }
