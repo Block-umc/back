@@ -23,6 +23,6 @@ public class ContestResponseDTO {
         private String startDate;
         private String endDate;
         private String HashTag;
-        private String hostUrl;
+        private String applyUrl;
     }
 }
