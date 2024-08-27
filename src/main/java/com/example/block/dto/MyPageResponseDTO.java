@@ -99,6 +99,7 @@ public class MyPageResponseDTO {
         String title;
         String startDate;
         String endDate;
+        String host;
         ContestType status;
     }
 }
