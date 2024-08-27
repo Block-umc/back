@@ -94,11 +94,11 @@ public class MyPageResponseDTO {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         Integer id;
-        String applyUrl;
         String imageUrl;
         String title;
         String startDate;
         String endDate;
         ContestType status;
+        String host;
     }
 }
