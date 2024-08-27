@@ -73,7 +73,6 @@ public class MyPageConverter {
                 .startDate(contest.getStartDate())
                 .endDate(contest.getEndDate())
                 .title(contest.getTitle())
-                .host(contest.getHost())
                 .build();
     }
 }

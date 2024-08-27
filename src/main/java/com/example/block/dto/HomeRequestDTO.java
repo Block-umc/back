@@ -30,6 +30,5 @@ public class HomeRequestDTO {
         private String contestHost;
         private String contestCategory;
         private String contestImageUrl;
-        private String applyUrl;
     }
 }
